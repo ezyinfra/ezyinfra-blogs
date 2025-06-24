@@ -1,0 +1,39 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cluster-example
+spec:
+  instances: 3  # 1 Primary, 2 Replicas
+
+  storage:
+    size: 1Gi
+
+  bootstrap:
+    initdb:
+      database: appdb
+      owner: appuser
+      secret:
+        name: appuser-secret
+
+  superuserSecret:
+    name: appuser-secret
+
+  monitoring:
+    enablePodMonitor: true
+
+  logLevel: info
+
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+
+
+  # Optional and safe PostgreSQL parameters
+  postgresql:
+    parameters:
+      log_min_duration_statement: "1000"  # Log queries taking > 1s
+      idle_in_transaction_session_timeout: "60000"  # 60s idle timeout
