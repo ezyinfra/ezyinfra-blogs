@@ -1,8 +1,9 @@
 # Monitoring Microservices application using OpenTelemetry 
 Reference Documentation: https://opentelemetry.io/docs/
 
-### Refer the Blog for more detail
+### Refer the Blog for Step-by-Step Setup details
 ```
+https://ezyinfra.dev/blog/switch-to-opentelemetry
 ```
 
 ### Prerequisites Installations
